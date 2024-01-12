@@ -44,21 +44,21 @@ app.post('/login',(req, res) => {
     })
 })
 
-app.get('/getItem/:id', (req, res) => {
+app.get('/item/:id', (req, res) => {
     const id = req.params.id;
     itemModel.findById({_id:id})
     .then(items => res.json(items))
     .catch(err => res.json(err))
 })
 
-app.delete('/deleteItem/:id', (req, res) => {
+app.delete('/item/:id', (req, res) => {
     const id = req.params.id;
     itemModel.findByIdAndDelete({_id:id})
     .then(res => res.json(res))
     .catch(err => res.json(err))
 })
 
-app.put('/updateItem/:id', (req, res ) => {
+app.put('/item/:id', (req, res ) => {
     const id = req.params.id;
     itemModel.findByIdAndUpdate({_id:id},{
         item: req.body.item,
